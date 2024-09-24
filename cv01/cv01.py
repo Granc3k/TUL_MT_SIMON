@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 import struct
 
 def main():
-    with open('cv01_dobryden.wav', 'rb') as f:
+    with open('./cv01/cv01_dobryden.wav', 'rb') as f:
         data = f.read(4)
         print("data: " + str(data))
         RIFF = struct.unpack('i', f.read(4))[0]
