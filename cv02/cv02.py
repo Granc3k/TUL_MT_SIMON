@@ -1,3 +1,4 @@
+# Description: Cteni wav souboru a zobrazeni signalu; Mady by: Hejsek, Šimon
 import numpy as np
 import matplotlib.pyplot as plt
 import struct
