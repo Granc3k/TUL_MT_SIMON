@@ -16,7 +16,6 @@ def save_data(filename, data):
 
 # LZW komprese
 def lzw_compress(data):
-    # Inicializace slovníku s hodnotami 1, 2, 3, 4, 5
     dictionary = {(i,): i for i in range(1, 6)}
     dict_size = 6
 
