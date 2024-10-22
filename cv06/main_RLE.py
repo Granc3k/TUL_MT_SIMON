@@ -6,7 +6,7 @@ def load_data(file_path):
     with open(file_path, "rb") as file:
         file_content = file.read()
         data = list(struct.unpack(f"{len(file_content)}B", file_content))
-    # returns as list of nums
+    # vrátí jako list čísel
     return data
 
 
@@ -20,15 +20,15 @@ def rle_encode(data):
     i = 0
     while i < len(data):
         count = 1
-        # start of counting number of same values
+        # start pocitani cisel
         while i + 1 < len(data) and data[i] == data[i + 1]:
             count += 1
             i += 1
-        # append to list
+        # pridani cisel do listu
         encoded_data.append(data[i])
         encoded_data.append(count)
         i += 1
-    # returns as list of nums
+    # return jako list cisel
     return encoded_data
 
 
@@ -36,12 +36,12 @@ def rle_decode(encoded_data):
     decoded_data = []
     i = 0
     while i < len(encoded_data):
-        # takes two numbers from list and appends first number to list count times
+        # vezme hodnotu a pocet a prida je do listu
         value = encoded_data[i]
         count = encoded_data[i + 1]
         decoded_data.extend([value] * count)
         i += 2
-    # returns as list of nums
+    # return jako list cisel
     return decoded_data
 
 
