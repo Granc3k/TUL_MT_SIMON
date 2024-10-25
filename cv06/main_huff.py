@@ -79,8 +79,8 @@ def main():
     print(f"Original Data: {data}")
 
     encoded_data, key_table = huff_encode(data)
-    print(f"Encoded Data: {encoded_data}")
     print(f"Huffman Codes: {key_table}")
+    print(f"Encoded Data: {encoded_data}")
 
     decoded_data = huff_decode(encoded_data, key_table)
     print(f"Decoded Data: {decoded_data}")
