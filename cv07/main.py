@@ -1,4 +1,6 @@
 import struct
+from decimal import Decimal
+import random
 
 
 def load_file(filename):
@@ -14,20 +16,19 @@ def arithmetic_encode(data):
         data = ''.join(map(str, data))
 
     frequency = {}
-
     for character in data:
         frequency[character] = frequency.get(character, 0) + 1
 
-    probability = {k: v / len(data) for k, v in frequency.items()}
+    probability = {k: Decimal(v) / Decimal(len(data)) for k, v in frequency.items()}
 
     intervals = {}
-    lower_limit = 0
+    lower_limit = Decimal(0)
     for character, prob in sorted(probability.items()):
         upper_limit = lower_limit + prob
         intervals[character] = (lower_limit, upper_limit)
         lower_limit = upper_limit
 
-    low, high = 0, 1
+    low, high = Decimal(0), Decimal(1)
     for character in data:
         character_lower, character_upper = intervals[character]
         # IN = <L + ZL*(H - L), L + ZH*(H - L))
@@ -49,12 +50,16 @@ def arithmetic_decode(encoded, intervals, length):
                 encoded = (encoded - lower) / interval_range
                 break
 
-    return ''.join(result)
+    return result
+
+def generate_list(n):
+    return [random.randint(1, 9) for _ in range(n)]
 
 
 def main():
     data = load_file('data/Cv07_Aritm_data.bin')
-    # data = "CBAABCADAC"
+    #data = "CBAABCADAC"
+    #data = generate_list(120)
 
     encoded, intervals = arithmetic_encode(data)
     decoded = arithmetic_decode(encoded, intervals, len(data))
@@ -65,6 +70,9 @@ def main():
     print('Intervals:')
     for char, (lower, upper) in intervals.items():
         print(f'{char}: <{lower:.1f}, {upper:.1f})')
+
+    print(f'Shoda: {list(map(int, data)) == data}')
+
 
 
 if __name__ == '__main__':
