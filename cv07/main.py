@@ -62,6 +62,9 @@ def main():
     print(f'Data: {data}')
     print(f'Encoded: {encoded}')
     print(f'Decoded: {decoded}')
+    print('Intervals:')
+    for char, (lower, upper) in intervals.items():
+        print(f'{char}: <{lower:.1f}, {upper:.1f})')
 
 
 if __name__ == '__main__':
