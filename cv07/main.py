@@ -1,3 +1,4 @@
+# made by Vojtěch "Shock" Hejsek, Martin "Granc3k" Šimon
 import struct
 from decimal import Decimal
 import random
@@ -13,7 +14,7 @@ def load_file(filename):
 
 def arithmetic_encode(data):
     if isinstance(data, list):
-        data = ''.join(map(str, data))
+        data = "".join(map(str, data))
 
     frequency = {}
     for character in data:
@@ -35,7 +36,8 @@ def arithmetic_encode(data):
         interval_range = high - low
         high = low + interval_range * character_upper
         low = low + interval_range * character_lower
-
+    
+    print(f"Intervals: <{low}, {high})")
     return (low + high) / 2, intervals
 
 
@@ -52,28 +54,28 @@ def arithmetic_decode(encoded, intervals, length):
 
     return result
 
+
 def generate_list(n):
     return [random.randint(1, 9) for _ in range(n)]
 
 
 def main():
-    data = load_file('data/Cv07_Aritm_data.bin')
-    #data = "CBAABCADAC"
-    #data = generate_list(120)
+    data = load_file("./cv07/data/Cv07_Aritm_data.bin")
+    # data = "CBAABCADAC"
+    # data = generate_list(120)
 
     encoded, intervals = arithmetic_encode(data)
     decoded = arithmetic_decode(encoded, intervals, len(data))
 
-    print(f'Data: {data}')
-    print(f'Encoded: {encoded}')
-    print(f'Decoded: {decoded}')
-    print('Intervals:')
+    print(f"Data: {data}")
+    print(f"Encoded: {encoded}")
+    print(f"Decoded: {decoded}")
+    print("Intervals:")
     for char, (lower, upper) in intervals.items():
-        print(f'{char}: <{lower:.1f}, {upper:.1f})')
+        print(f"{char}: <{lower:.1f}, {upper:.1f})")
 
-    print(f'Shoda: {list(map(int, data)) == data}')
+    print(f"Shoda: {list(map(int, data)) == data}")
 
 
-
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()
