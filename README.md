@@ -1,4 +1,4 @@
-# Podklady k předmětu TPB na univerzitě TUL
+# Podklady k předmětu MT na univerzitě TUL
 
 Tento repozitář obsahuje podklady a vypracované civčení k předmětu MT na Technické univerzitě v Liberci (TUL).
 
