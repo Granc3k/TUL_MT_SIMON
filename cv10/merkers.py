@@ -2,7 +2,7 @@
 import cv2
 import numpy as np
 
-# Load imagů
+# Load image
 image_path = "./cv10/data/input/cv11_merkers.bmp"
 image = cv2.imread(image_path, cv2.IMREAD_GRAYSCALE)
 
@@ -14,13 +14,12 @@ height, width = binary_image.shape
 upper_half = binary_image[: height // 2, :]
 lower_half = binary_image[height // 2 :, :]
 
-# Definice strukturního elementu
+# Def kernelu
 kernel = np.ones((3, 3), np.uint8)
 
 # Eroze pro získání marků
 eroded_upper = cv2.erode(upper_half, kernel, iterations=1)
 eroded_lower = cv2.erode(lower_half, kernel, iterations=1)
-
 
 # Find souřadnic marků
 def find_coordinates(eroded_image):
