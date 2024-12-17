@@ -1,0 +1,7 @@
+6 příkladů:
+- vlastnoručně psané materiály
+- žádné telefony
+- jen kalkulačky
+- jde to z hlavy
+- to co jsme programovali
+- LZW, huffman, aritmetické kódování, move to front, inverzní bezpečnostní kód, burrows
