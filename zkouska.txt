@@ -4,4 +4,4 @@
 - jen kalkulačky
 - jde to z hlavy
 - to co jsme programovali
-- LZW, huffman, aritmetické kódování, move to front, inverzní bezpečnostní kód, burrows
+- LZW - cv05, huffman - cv06, aritmetické kódování - cv07, move to front - cv11, inverzní bezpečnostní kód - cv12, burrows - cv11
